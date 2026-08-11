@@ -17,6 +17,7 @@ import {
   Users,
   TestTube,
   BookOpen,
+  Info,
 } from 'lucide-react'
 
 const CopyButton = ({ text }: { text: string }) => {
@@ -397,22 +398,17 @@ const Index = () => {
               <StepHeader number={4} title="Testar plugin do consultor" icon={TestTube} />
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4">
+              <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 text-sm mb-6 flex items-start gap-2">
+                <Info className="h-4 w-4 text-blue-600 mt-0.5 shrink-0" />
+                <span>
+                  <strong>Nota:</strong> o escopo já vem criado no case. Os testes começam a partir
+                  da análise crítica.
+                </span>
+              </div>
               <div className="space-y-6">
                 {[
                   {
                     num: 1,
-                    title: 'Gerar escopo base',
-                    prompt:
-                      'Use a SkillMind para analisar todas as fontes deste case e gerar o escopo base do projeto.',
-                    checks: [
-                      'Leu documentos, reuniões, DMO e mapeamentos',
-                      'Criou 03-Projeto/01-Escopo.md',
-                      'Separou fatos, inferências e dúvidas',
-                      'Não inventou informações',
-                    ],
-                  },
-                  {
-                    num: 2,
                     title: 'Análise crítica',
                     prompt:
                       'Use a SkillMind para executar uma análise crítica completa deste escopo. Quero a cadeia completa, incluindo requisitos, revisão e conselho de decisão quando necessário.',
@@ -425,7 +421,7 @@ const Index = () => {
                     ],
                   },
                   {
-                    num: 3,
+                    num: 2,
                     title: 'Escopo definitivo',
                     prompt:
                       'Use a SkillMind para gerar o escopo definitivo com base no escopo, na análise crítica e na análise do consultor.',
@@ -437,7 +433,7 @@ const Index = () => {
                     ],
                   },
                   {
-                    num: 4,
+                    num: 3,
                     title: 'Gerar SPECs',
                     prompt: 'Use a SkillMind para gerar e revisar as SPECs da fase 1.',
                     checks: [
@@ -448,7 +444,7 @@ const Index = () => {
                     ],
                   },
                   {
-                    num: 5,
+                    num: 4,
                     title: 'Gerar tasks',
                     prompt:
                       'Use a SkillMind para gerar as tasks executáveis da fase 1 a partir das SPECs aprovadas.',
@@ -461,7 +457,7 @@ const Index = () => {
                     ],
                   },
                   {
-                    num: 6,
+                    num: 5,
                     title: 'Preparar pasta do cliente',
                     prompt:
                       'Use a SkillMind para preparar a pasta externa do cliente. Faça primeiro um dry-run e não publique nada sem minha confirmação.',
@@ -509,7 +505,7 @@ const Index = () => {
                     prompt:
                       'Quero começar a trabalhar no projeto. Analise o que precisa ser feito agora.',
                     expected:
-                      'Escolhe 1 task, analisa profundamente, explica o plano, para e pede autorização. Se开始 a programar na mesma resposta, é erro.',
+                      'Escolhe 1 task, analisa profundamente, explica o plano, para e pede autorização. Se começar a programar na mesma resposta, é erro.',
                   },
                   {
                     num: 2,
