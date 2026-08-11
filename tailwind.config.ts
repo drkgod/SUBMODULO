@@ -64,6 +64,19 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        /* Adapta brand tokens */
+        adapta: {
+          black: '#050505',
+          surface: '#131415',
+          deep: '#0A0B0B',
+          teal: '#4AB7A3',
+          'teal-bright': '#6DD5C3',
+          border: '#2A2B2C',
+          white: '#FFFFFF',
+          muted: '#AAACAD',
+          secondary: '#D4D5D6',
+          red: '#EF4444',
+        },
         sidebar: {
           DEFAULT: 'hsl(var(--sidebar-background))',
           foreground: 'hsl(var(--sidebar-foreground))',
@@ -94,6 +107,8 @@ export default {
       boxShadow: {
         subtle: '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
         elevation: '0 4px 20px rgba(0, 0, 0, 0.05)',
+        teal: '0 0 12px rgba(74, 183, 163, 0.4)',
+        'teal-soft': '0 0 8px rgba(74, 183, 163, 0.25)',
       },
       transitionTimingFunction: {
         apple: 'cubic-bezier(0.42, 0, 0.58, 1)',

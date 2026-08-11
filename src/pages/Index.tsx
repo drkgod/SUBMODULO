@@ -19,6 +19,8 @@ import {
   BookOpen,
   Info,
   FolderOpen,
+  ShieldCheck,
+  AlertTriangle,
 } from 'lucide-react'
 
 const CopyButton = ({ text }: { text: string }) => {
@@ -29,27 +31,30 @@ const CopyButton = ({ text }: { text: string }) => {
     setTimeout(() => setCopied(false), 2000)
   }
   return (
-    <Button variant="ghost" size="sm" onClick={handleCopy} className="h-6 px-2 text-xs">
-      {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={handleCopy}
+      className="h-6 px-2 text-xs text-adapta-muted hover:text-adapta-teal hover:bg-adapta-teal/10 transition-colors"
+    >
+      {copied ? <Check className="h-3 w-3 text-adapta-teal" /> : <Copy className="h-3 w-3" />}
     </Button>
   )
 }
 
 const PromptBlock = ({ title, children }: { title: string; children: string }) => (
-  <div className="my-3 rounded-lg border bg-muted/50 p-4">
+  <div className="my-3 rounded-lg border border-adapta bg-adapta-deep p-4">
     <div className="flex items-center justify-between mb-2">
-      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-        {title}
-      </span>
+      <span className="text-xs font-medium text-adapta-teal uppercase tracking-wide">{title}</span>
       <CopyButton text={children} />
     </div>
-    <pre className="text-sm whitespace-pre-wrap font-mono text-foreground/80">{children}</pre>
+    <pre className="text-sm whitespace-pre-wrap font-mono text-adapta-secondary">{children}</pre>
   </div>
 )
 
 const CheckItem = ({ children }: { children: React.ReactNode }) => (
-  <li className="flex items-start gap-2 text-sm">
-    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+  <li className="flex items-start gap-2.5 text-sm text-adapta-secondary">
+    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-adapta-teal shrink-0 shadow-[0_0_6px_rgba(74,183,163,0.7)]" />
     <span>{children}</span>
   </li>
 )
@@ -63,38 +68,43 @@ const StepHeader = ({
   title: string
   icon: React.ElementType
 }) => (
-  <div className="flex items-center gap-3 mb-4">
-    <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground font-bold text-lg">
+  <div className="flex items-center gap-3">
+    <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-adapta-teal/40 bg-adapta-teal/10 text-adapta-teal font-bold text-sm">
       {number}
     </div>
     <div className="flex items-center gap-2">
-      <Icon className="h-5 w-5 text-primary" />
-      <h2 className="text-xl font-bold">{title}</h2>
+      <Icon className="h-5 w-5 text-adapta-teal" />
+      <h2 className="text-base font-semibold text-white">{title}</h2>
     </div>
   </div>
 )
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
-      <div className="container mx-auto py-8 px-4 max-w-4xl">
+    <div className="min-h-screen bg-adapta-black text-white">
+      <div className="container mx-auto py-10 px-4 max-w-4xl">
         {/* Header */}
-        <div className="text-center mb-10">
-          <Badge variant="secondary" className="mb-3">
+        <div className="text-center mb-12 animate-fade-in-up">
+          <Badge className="mb-4 border-0 bg-adapta-teal/10 text-adapta-teal hover:bg-adapta-teal/15">
             Adapta Labs Native
           </Badge>
-          <h1 className="text-4xl font-bold mb-3">Guia de Teste dos Plugins</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 text-white tracking-tight">
+            Guia de Teste dos <span className="text-adapta-teal">Plugins</span>
+          </h1>
+          <p className="text-lg text-adapta-muted max-w-2xl mx-auto leading-relaxed">
             Passo a passo para configurar e testar os plugins do consultor e do cliente no ETHOS vs
             Claude
           </p>
         </div>
 
         {/* Casos de teste */}
-        <Card className="mb-8 border-amber-500/20 bg-amber-500/5">
+        <Card
+          className="mb-6 border-amber-500/20 bg-amber-500/[0.04] backdrop-blur-sm animate-fade-in-up"
+          style={{ animationDelay: '60ms' }}
+        >
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <FolderOpen className="h-5 w-5 text-amber-600" />
+            <CardTitle className="flex items-center gap-2 text-lg text-white">
+              <FolderOpen className="h-5 w-5 text-amber-500" />
               Casos de teste
             </CardTitle>
           </CardHeader>
@@ -103,36 +113,39 @@ const Index = () => {
               href="https://drive.google.com/drive/folders/1pWvVH5EyBrwkj9VMGakZPqxemq-kcDds?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-3 rounded-lg border hover:bg-muted/50 transition-colors group"
+              className="flex items-center gap-3 p-3 rounded-lg border border-adapta bg-adapta-deep hover:border-adapta-teal/40 hover:bg-adapta-teal/[0.04] transition-colors group"
             >
               <div className="h-10 w-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                <FolderOpen className="h-5 w-5 text-amber-600" />
+                <FolderOpen className="h-5 w-5 text-amber-500" />
               </div>
               <div>
-                <div className="font-medium group-hover:text-primary transition-colors">
+                <div className="font-medium text-white group-hover:text-adapta-teal transition-colors">
                   Pasta de cases no Google Drive
                 </div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-xs text-adapta-muted">
                   Cases fictícios para teste dos plugins
                 </div>
               </div>
-              <ExternalLink className="h-4 w-4 ml-auto text-muted-foreground" />
+              <ExternalLink className="h-4 w-4 ml-auto text-adapta-muted group-hover:text-adapta-teal transition-colors" />
             </a>
-            <div className="mt-3 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-sm flex items-start gap-2">
-              <Info className="h-4 w-4 text-amber-600 mt-0.5 shrink-0" />
+            <div className="mt-3 p-3 rounded-lg bg-amber-500/[0.06] border border-amber-500/15 text-sm text-adapta-secondary flex items-start gap-2">
+              <Info className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
               <span>
-                <strong>Importante:</strong> copie os cases para uma pasta no seu computador. Não
-                altere os originais nessa pasta do Drive.
+                <strong className="text-white">Importante:</strong> copie os cases para uma pasta no
+                seu computador. Não altere os originais nessa pasta do Drive.
               </span>
             </div>
           </CardContent>
         </Card>
 
         {/* Repos */}
-        <Card className="mb-8 border-primary/20">
+        <Card
+          className="mb-6 border-adapta bg-adapta-surface animate-fade-in-up"
+          style={{ animationDelay: '120ms' }}
+        >
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <GitBranch className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-lg text-white">
+              <GitBranch className="h-5 w-5 text-adapta-teal" />
               Repositórios
             </CardTitle>
           </CardHeader>
@@ -142,45 +155,45 @@ const Index = () => {
                 href="https://github.com/drkgod/Plugin-Consultor---Adapta"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg border hover:bg-muted/50 transition-colors group"
+                className="flex items-center gap-3 p-3 rounded-lg border border-adapta bg-adapta-deep hover:border-adapta-teal/40 hover:bg-adapta-teal/[0.04] transition-colors group"
               >
-                <div className="h-10 w-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                  <GitBranch className="h-5 w-5 text-blue-600" />
+                <div className="h-10 w-10 rounded-lg bg-adapta-teal/10 flex items-center justify-center">
+                  <GitBranch className="h-5 w-5 text-adapta-teal" />
                 </div>
                 <div>
-                  <div className="font-medium group-hover:text-primary transition-colors">
+                  <div className="font-medium text-white group-hover:text-adapta-teal transition-colors">
                     Plugin Consultor
                   </div>
-                  <div className="text-xs text-muted-foreground">21 skills</div>
+                  <div className="text-xs text-adapta-muted">21 skills</div>
                 </div>
-                <ExternalLink className="h-4 w-4 ml-auto text-muted-foreground" />
+                <ExternalLink className="h-4 w-4 ml-auto text-adapta-muted group-hover:text-adapta-teal transition-colors" />
               </a>
               <a
                 href="https://github.com/drkgod/Plugin-Cliente---Adapta"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg border hover:bg-muted/50 transition-colors group"
+                className="flex items-center gap-3 p-3 rounded-lg border border-adapta bg-adapta-deep hover:border-adapta-teal/40 hover:bg-adapta-teal/[0.04] transition-colors group"
               >
-                <div className="h-10 w-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-                  <GitBranch className="h-5 w-5 text-green-600" />
+                <div className="h-10 w-10 rounded-lg bg-adapta-teal/10 flex items-center justify-center">
+                  <GitBranch className="h-5 w-5 text-adapta-teal" />
                 </div>
                 <div>
-                  <div className="font-medium group-hover:text-primary transition-colors">
+                  <div className="font-medium text-white group-hover:text-adapta-teal transition-colors">
                     Plugin Cliente
                   </div>
-                  <div className="text-xs text-muted-foreground">7 skills</div>
+                  <div className="text-xs text-adapta-muted">7 skills</div>
                 </div>
-                <ExternalLink className="h-4 w-4 ml-auto text-muted-foreground" />
+                <ExternalLink className="h-4 w-4 ml-auto text-adapta-muted group-hover:text-adapta-teal transition-colors" />
               </a>
             </div>
-            <div className="mt-3 p-3 rounded-lg bg-muted/50 flex items-center gap-2">
-              <FileText className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm">Documento de registro: </span>
+            <div className="mt-3 p-3 rounded-lg bg-adapta-deep border border-adapta flex items-center gap-2">
+              <FileText className="h-4 w-4 text-adapta-muted" />
+              <span className="text-sm text-adapta-secondary">Documento de registro: </span>
               <a
                 href="https://docs.google.com/document/d/1DIht-Up4aRClFPCO8x4huHhWZLfS5aIWqGnW9FVOn-U/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-primary hover:underline font-medium"
+                className="text-sm text-adapta-teal hover:text-adapta-teal-bright hover:underline font-medium transition-colors"
               >
                 Google Docs — Registro dos testes
               </a>
@@ -189,12 +202,18 @@ const Index = () => {
         </Card>
 
         {/* Pré-requisitos */}
-        <Card className="mb-8">
+        <Card
+          className="mb-6 border-adapta bg-adapta-surface animate-fade-in-up"
+          style={{ animationDelay: '180ms' }}
+        >
           <CardHeader className="pb-3">
-            <CardTitle className="text-lg">Pré-requisitos</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-lg text-white">
+              <ShieldCheck className="h-5 w-5 text-adapta-teal" />
+              Pré-requisitos
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid sm:grid-cols-2 gap-2">
+            <div className="grid sm:grid-cols-2 gap-2.5">
               <CheckItem>Acesso ao ETHOS</CheckItem>
               <CheckItem>Acesso ao Claude (Anthropic)</CheckItem>
               <CheckItem>Case fictício para teste</CheckItem>
@@ -203,9 +222,9 @@ const Index = () => {
               <CheckItem>Google Drive conectado no ETHOS</CheckItem>
               <CheckItem>tl;dv conectado (se aplicável)</CheckItem>
             </div>
-            <div className="mt-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-sm">
-              <strong>Regra:</strong> não usar clientes reais. Nunca colocar tokens, senhas ou
-              credenciais em prompts, memória, prints ou documentos.
+            <div className="mt-4 p-3 rounded-lg border text-sm text-adapta-secondary bg-[rgba(239,68,68,0.06)] border-[rgba(239,68,68,0.15)]">
+              <strong className="text-adapta-red">Regra:</strong> não usar clientes reais. Nunca
+              colocar tokens, senhas ou credenciais em prompts, memória, prints ou documentos.
             </div>
           </CardContent>
         </Card>
@@ -213,21 +232,29 @@ const Index = () => {
         {/* Steps */}
         <Accordion type="multiple" className="space-y-4">
           {/* Passo 1 */}
-          <AccordionItem value="step-1" className="border rounded-lg">
-            <AccordionTrigger className="px-4 py-3 hover:no-underline">
+          <AccordionItem
+            value="step-1"
+            className="border border-adapta rounded-lg bg-adapta-surface overflow-hidden animate-fade-in-up"
+            style={{ animationDelay: '240ms' }}
+          >
+            <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-adapta-teal/[0.03] transition-colors">
               <StepHeader number={1} title="Criar agente do consultor" icon={Users} />
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-medium mb-2">1.1 Criar o assistente</h4>
-                  <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                  <h4 className="font-medium mb-2 text-white">1.1 Criar o assistente</h4>
+                  <ol className="list-decimal list-inside space-y-1 text-sm text-adapta-muted">
                     <li>
-                      No ETHOS, vá em <strong>Personalizar</strong> &gt;{' '}
-                      <strong>Novo assistente</strong>
+                      No ETHOS, vá em{' '}
+                      <strong className="text-adapta-secondary">Personalizar</strong> &gt;{' '}
+                      <strong className="text-adapta-secondary">Novo assistente</strong>
                     </li>
                     <li>
-                      Nome: <code className="bg-muted px-1 rounded">Adapta Consultor — Teste</code>
+                      Nome:{' '}
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
+                        Adapta Consultor — Teste
+                      </code>
                     </li>
                     <li>Cole a instrução abaixo</li>
                   </ol>
@@ -244,54 +271,73 @@ const Index = () => {
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-2">1.2 Configurar persona e memória</h4>
-                  <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                  <h4 className="font-medium mb-2 text-white">1.2 Configurar persona e memória</h4>
+                  <ol className="list-decimal list-inside space-y-1 text-sm text-adapta-muted">
                     <li>
                       Abra{' '}
                       <a
                         href="https://github.com/drkgod/Plugin-Consultor---Adapta"
                         target="_blank"
-                        className="text-primary hover:underline"
+                        className="text-adapta-teal hover:text-adapta-teal-bright hover:underline"
                       >
                         Plugin Consultor no GitHub
                       </a>
                     </li>
                     <li>
                       Copie{' '}
-                      <code className="bg-muted px-1 rounded">
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
                         adapta/personas/consultor-adapta.md
                       </code>{' '}
-                      para o campo <strong>SOUL.md</strong>
+                      para o campo <strong className="text-adapta-secondary">SOUL.md</strong>
                     </li>
                     <li>
-                      Vá em <strong>Memória</strong> &gt; <strong>Nova seção</strong>, nomeie{' '}
-                      <code className="bg-muted px-1 rounded">Adapta Consultor</code>
+                      Vá em <strong className="text-adapta-secondary">Memória</strong> &gt;{' '}
+                      <strong className="text-adapta-secondary">Nova seção</strong>, nomeie{' '}
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
+                        Adapta Consultor
+                      </code>
                     </li>
                     <li>
-                      Copie <code className="bg-muted px-1 rounded">adapta/MEMORY.md</code> para
-                      essa seção
+                      Copie{' '}
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
+                        adapta/MEMORY.md
+                      </code>{' '}
+                      para essa seção
                     </li>
                     <li>Salve</li>
                   </ol>
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-2">1.3 Conectar ferramentas</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    No menu <strong>Conectores</strong>, conecte:
+                  <h4 className="font-medium mb-2 text-white">1.3 Conectar ferramentas</h4>
+                  <p className="text-sm text-adapta-muted mb-2">
+                    No menu <strong className="text-adapta-secondary">Conectores</strong>, conecte:
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline">GitHub</Badge>
-                    <Badge variant="outline">Google Drive</Badge>
-                    <Badge variant="outline">tl;dv (se aplicável)</Badge>
+                    <Badge
+                      variant="outline"
+                      className="border-adapta text-adapta-secondary bg-adapta-deep"
+                    >
+                      GitHub
+                    </Badge>
+                    <Badge
+                      variant="outline"
+                      className="border-adapta text-adapta-secondary bg-adapta-deep"
+                    >
+                      Google Drive
+                    </Badge>
+                    <Badge
+                      variant="outline"
+                      className="border-adapta text-adapta-secondary bg-adapta-deep"
+                    >
+                      tl;dv (se aplicável)
+                    </Badge>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-2">1.4 Instalar o plugin</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    Envie esta mensagem ao agente:
-                  </p>
+                  <h4 className="font-medium mb-2 text-white">1.4 Instalar o plugin</h4>
+                  <p className="text-sm text-adapta-muted mb-2">Envie esta mensagem ao agente:</p>
                   <PromptBlock title="Comando de instalação">
                     Instale para este agente o plugin do consultor disponível neste repositório:
                     https://github.com/drkgod/Plugin-Consultor---Adapta Instale todas as skills
@@ -303,9 +349,9 @@ const Index = () => {
                     conseguiu instalar ou acessar. Não diga que instalou algo que não conseguiu
                     confirmar.
                   </PromptBlock>
-                  <div className="mt-2 p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 text-sm">
-                    <strong>Esperado:</strong> 21 skills instaladas. Se faltar alguma, bata print e
-                    registre no Google Docs.
+                  <div className="mt-2 p-3 rounded-lg bg-adapta-teal/[0.06] border border-adapta-teal/20 text-sm text-adapta-secondary">
+                    <strong className="text-adapta-teal">Esperado:</strong> 21 skills instaladas. Se
+                    faltar alguma, bata print e registre no Google Docs.
                   </div>
                 </div>
               </div>
@@ -313,20 +359,28 @@ const Index = () => {
           </AccordionItem>
 
           {/* Passo 2 */}
-          <AccordionItem value="step-2" className="border rounded-lg">
-            <AccordionTrigger className="px-4 py-3 hover:no-underline">
+          <AccordionItem
+            value="step-2"
+            className="border border-adapta rounded-lg bg-adapta-surface overflow-hidden animate-fade-in-up"
+            style={{ animationDelay: '300ms' }}
+          >
+            <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-adapta-teal/[0.03] transition-colors">
               <StepHeader number={2} title="Criar agente do cliente" icon={Users} />
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-medium mb-2">2.1 Criar o assistente</h4>
-                  <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                  <h4 className="font-medium mb-2 text-white">2.1 Criar o assistente</h4>
+                  <ol className="list-decimal list-inside space-y-1 text-sm text-adapta-muted">
                     <li>
-                      Crie <strong>outro assistente separado</strong>
+                      Crie{' '}
+                      <strong className="text-adapta-secondary">outro assistente separado</strong>
                     </li>
                     <li>
-                      Nome: <code className="bg-muted px-1 rounded">Adapta Cliente — Teste</code>
+                      Nome:{' '}
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
+                        Adapta Cliente — Teste
+                      </code>
                     </li>
                     <li>Cole a instrução abaixo</li>
                   </ol>
@@ -345,31 +399,36 @@ const Index = () => {
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-2">2.2 Configurar persona e memória</h4>
-                  <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                  <h4 className="font-medium mb-2 text-white">2.2 Configurar persona e memória</h4>
+                  <ol className="list-decimal list-inside space-y-1 text-sm text-adapta-muted">
                     <li>
                       Abra{' '}
                       <a
                         href="https://github.com/drkgod/Plugin-Cliente---Adapta"
                         target="_blank"
-                        className="text-primary hover:underline"
+                        className="text-adapta-teal hover:text-adapta-teal-bright hover:underline"
                       >
                         Plugin Cliente no GitHub
                       </a>
                     </li>
                     <li>
                       Copie{' '}
-                      <code className="bg-muted px-1 rounded">
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
                         adapta-cliente/personas/agente-cliente.md
                       </code>{' '}
-                      para o <strong>SOUL.md</strong>
+                      para o <strong className="text-adapta-secondary">SOUL.md</strong>
                     </li>
                     <li>
                       Crie seção na Memória:{' '}
-                      <code className="bg-muted px-1 rounded">Adapta Cliente</code>
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
+                        Adapta Cliente
+                      </code>
                     </li>
                     <li>
-                      Copie <code className="bg-muted px-1 rounded">adapta-cliente/MEMORY.md</code>{' '}
+                      Copie{' '}
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
+                        adapta-cliente/MEMORY.md
+                      </code>{' '}
                       para essa seção
                     </li>
                     <li>Salve</li>
@@ -377,8 +436,8 @@ const Index = () => {
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-2">2.3 Instalar o plugin</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <h4 className="font-medium mb-2 text-white">2.3 Instalar o plugin</h4>
+                  <p className="text-sm text-adapta-muted mb-2">
                     Conecte GitHub, Google Drive e integrações necessárias. Envie:
                   </p>
                   <PromptBlock title="Comando de instalação">
@@ -391,8 +450,8 @@ const Index = () => {
                     skills; 3. quais arquivos ou dependências não conseguiu instalar ou acessar. Não
                     diga que instalou algo que não conseguiu confirmar.
                   </PromptBlock>
-                  <div className="mt-2 p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-sm">
-                    <strong>Esperado:</strong> 7 skills instaladas.
+                  <div className="mt-2 p-3 rounded-lg bg-adapta-teal/[0.06] border border-adapta-teal/20 text-sm text-adapta-secondary">
+                    <strong className="text-adapta-teal">Esperado:</strong> 7 skills instaladas.
                   </div>
                 </div>
               </div>
@@ -400,26 +459,36 @@ const Index = () => {
           </AccordionItem>
 
           {/* Passo 3 */}
-          <AccordionItem value="step-3" className="border rounded-lg">
-            <AccordionTrigger className="px-4 py-3 hover:no-underline">
+          <AccordionItem
+            value="step-3"
+            className="border border-adapta rounded-lg bg-adapta-surface overflow-hidden animate-fade-in-up"
+            style={{ animationDelay: '360ms' }}
+          >
+            <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-adapta-teal/[0.03] transition-colors">
               <StepHeader number={3} title="Preparar os cases" icon={FileText} />
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-medium mb-2">Duplicar o case</h4>
-                  <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                  <h4 className="font-medium mb-2 text-white">Duplicar o case</h4>
+                  <ol className="list-decimal list-inside space-y-1 text-sm text-adapta-muted">
                     <li>Duas cópias idênticas da pasta/repositório</li>
                     <li>
-                      Nomeie: <code className="bg-muted px-1 rounded">&lt;nome&gt; — CLAUDE</code> e{' '}
-                      <code className="bg-muted px-1 rounded">&lt;nome&gt; — ETHOS</code>
+                      Nomeie:{' '}
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
+                        &lt;nome&gt; — CLAUDE
+                      </code>{' '}
+                      e{' '}
+                      <code className="bg-adapta-deep border border-adapta px-1.5 py-0.5 rounded text-adapta-secondary font-mono text-[0.85em]">
+                        &lt;nome&gt; — ETHOS
+                      </code>
                     </li>
                     <li>Cada agente acessa somente sua cópia</li>
                   </ol>
                 </div>
                 <div>
-                  <h4 className="font-medium mb-2">Regras da comparação</h4>
-                  <ul className="space-y-1 text-sm text-muted-foreground">
+                  <h4 className="font-medium mb-2 text-white">Regras da comparação</h4>
+                  <ul className="space-y-1">
                     <CheckItem>Mesmo case e mesmo pedido nos dois ambientes</CheckItem>
                     <CheckItem>Responda do mesmo jeito quando o agente fizer perguntas</CheckItem>
                     <CheckItem>Não dê dicas extras ao ETHOS</CheckItem>
@@ -432,19 +501,23 @@ const Index = () => {
           </AccordionItem>
 
           {/* Passo 4 */}
-          <AccordionItem value="step-4" className="border rounded-lg">
-            <AccordionTrigger className="px-4 py-3 hover:no-underline">
+          <AccordionItem
+            value="step-4"
+            className="border border-adapta rounded-lg bg-adapta-surface overflow-hidden animate-fade-in-up"
+            style={{ animationDelay: '420ms' }}
+          >
+            <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-adapta-teal/[0.03] transition-colors">
               <StepHeader number={4} title="Testar plugin do consultor" icon={TestTube} />
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4">
-              <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 text-sm mb-6 flex items-start gap-2">
-                <Info className="h-4 w-4 text-blue-600 mt-0.5 shrink-0" />
+              <div className="p-3 rounded-lg bg-adapta-teal/[0.06] border border-adapta-teal/20 text-sm mb-6 text-adapta-secondary flex items-start gap-2">
+                <Info className="h-4 w-4 text-adapta-teal mt-0.5 shrink-0" />
                 <span>
-                  <strong>Nota:</strong> o escopo já vem criado no case. Os testes começam a partir
-                  da análise crítica.
+                  <strong className="text-adapta-teal">Nota:</strong> o escopo já vem criado no
+                  case. Os testes começam a partir da análise crítica.
                 </span>
               </div>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {[
                   {
                     num: 1,
@@ -509,13 +582,19 @@ const Index = () => {
                     ],
                   },
                 ].map((test) => (
-                  <div key={test.num} className="border rounded-lg p-4">
-                    <h4 className="font-medium mb-2">
-                      Teste {test.num} — {test.title}
+                  <div
+                    key={test.num}
+                    className="border border-adapta rounded-lg p-4 bg-adapta-deep"
+                  >
+                    <h4 className="font-medium mb-2 text-white flex items-center gap-2">
+                      <span className="inline-flex items-center justify-center h-5 min-w-5 px-1.5 rounded-md bg-adapta-teal/15 text-adapta-teal text-[0.7rem] font-bold">
+                        {test.num}
+                      </span>
+                      {test.title}
                     </h4>
                     <PromptBlock title="Prompt">{test.prompt}</PromptBlock>
                     <div className="mt-2">
-                      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                      <span className="text-xs font-medium text-adapta-teal uppercase tracking-wide">
                         Verifique se:
                       </span>
                       <ul className="mt-1 space-y-1">
@@ -531,12 +610,16 @@ const Index = () => {
           </AccordionItem>
 
           {/* Passo 5 */}
-          <AccordionItem value="step-5" className="border rounded-lg">
-            <AccordionTrigger className="px-4 py-3 hover:no-underline">
+          <AccordionItem
+            value="step-5"
+            className="border border-adapta rounded-lg bg-adapta-surface overflow-hidden animate-fade-in-up"
+            style={{ animationDelay: '480ms' }}
+          >
+            <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-adapta-teal/[0.03] transition-colors">
               <StepHeader number={5} title="Testar plugin do cliente" icon={TestTube} />
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4">
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {[
                   {
                     num: 1,
@@ -583,13 +666,19 @@ const Index = () => {
                       'Revalida critérios, atualiza task/STATUS/changelog, conclui só 1 task, não começa a próxima.',
                   },
                 ].map((test) => (
-                  <div key={test.num} className="border rounded-lg p-4">
-                    <h4 className="font-medium mb-2">
-                      Teste {test.num} — {test.title}
+                  <div
+                    key={test.num}
+                    className="border border-adapta rounded-lg p-4 bg-adapta-deep"
+                  >
+                    <h4 className="font-medium mb-2 text-white flex items-center gap-2">
+                      <span className="inline-flex items-center justify-center h-5 min-w-5 px-1.5 rounded-md bg-adapta-teal/15 text-adapta-teal text-[0.7rem] font-bold">
+                        {test.num}
+                      </span>
+                      {test.title}
                     </h4>
                     <PromptBlock title="Prompt">{test.prompt}</PromptBlock>
-                    <div className="mt-2 p-3 rounded-lg bg-muted/50 text-sm">
-                      <strong>Esperado:</strong> {test.expected}
+                    <div className="mt-2 p-3 rounded-lg bg-adapta-teal/[0.06] border border-adapta-teal/20 text-sm text-adapta-secondary">
+                      <strong className="text-adapta-teal">Esperado:</strong> {test.expected}
                     </div>
                   </div>
                 ))}
@@ -598,14 +687,18 @@ const Index = () => {
           </AccordionItem>
 
           {/* Passo 6 */}
-          <AccordionItem value="step-6" className="border rounded-lg">
-            <AccordionTrigger className="px-4 py-3 hover:no-underline">
+          <AccordionItem
+            value="step-6"
+            className="border border-adapta rounded-lg bg-adapta-surface overflow-hidden animate-fade-in-up"
+            style={{ animationDelay: '540ms' }}
+          >
+            <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-adapta-teal/[0.03] transition-colors">
               <StepHeader number={6} title="Registrar no Google Docs" icon={BookOpen} />
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4">
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-medium mb-2">Bloco padrão de registro</h4>
+                  <h4 className="font-medium mb-2 text-white">Bloco padrão de registro</h4>
                   <PromptBlock title="Template">
                     CASE: CONSULTOR QUE TESTOU: DATA: ETAPA TESTADA: RESULTADO NO CLAUDE: RESULTADO
                     NO ETHOS: PRINCIPAIS DIFERENÇAS: CONCLUSÃO: [ ] ETHOS melhor que Claude [ ]
@@ -614,14 +707,14 @@ const Index = () => {
                   </PromptBlock>
                 </div>
                 <div>
-                  <h4 className="font-medium mb-2">Se houver erro</h4>
+                  <h4 className="font-medium mb-2 text-white">Se houver erro</h4>
                   <PromptBlock title="Template de erro">
                     ERRO ENCONTRADO: PROMPT EXATO ENVIADO: O QUE ERA ESPERADO: O QUE O ETHOS FEZ:
                     ISSO TAMBÉM ACONTECEU NO CLAUDE? LINK DA CONVERSA: PRINTS:
                   </PromptBlock>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    <strong>Obrigatório:</strong> bater print antes de tentar novamente. Não apagar
-                    a conversa que apresentou o problema.
+                  <p className="mt-2 text-sm text-adapta-muted">
+                    <strong className="text-adapta-secondary">Obrigatório:</strong> bater print
+                    antes de tentar novamente. Não apagar a conversa que apresentou o problema.
                   </p>
                 </div>
               </div>
@@ -630,15 +723,18 @@ const Index = () => {
         </Accordion>
 
         {/* Aprovação */}
-        <Card className="mt-8 border-green-500/20">
+        <Card
+          className="mt-8 border-adapta-teal/30 bg-adapta-teal/[0.04] animate-fade-in-up"
+          style={{ animationDelay: '600ms' }}
+        >
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg text-green-700 dark:text-green-400">
+            <CardTitle className="flex items-center gap-2 text-lg text-adapta-teal">
               <Check className="h-5 w-5" />
               Quando o teste é aprovado
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground mb-3">
+            <p className="text-sm text-adapta-muted mb-3">
               O plugin está pronto para piloto quando, nos diferentes cases:
             </p>
             <ul className="space-y-1">
@@ -655,18 +751,24 @@ const Index = () => {
               <CheckItem>Sem alucinações recorrentes</CheckItem>
               <CheckItem>Consultores consideram resultado confiável</CheckItem>
             </ul>
-            <div className="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-sm">
-              Se uma etapa produzir resultados rasos ou instáveis em vários cases,{' '}
-              <strong>não liberar para cliente real</strong> até ajustar e repetir os testes.
+            <div className="mt-4 p-3 rounded-lg bg-amber-500/[0.06] border border-amber-500/15 text-sm text-adapta-secondary flex items-start gap-2">
+              <AlertTriangle className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
+              <span>
+                Se uma etapa produzir resultados rasos ou instáveis em vários cases,{' '}
+                <strong className="text-white">não liberar para cliente real</strong> até ajustar e
+                repetir os testes.
+              </span>
             </div>
           </CardContent>
         </Card>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-sm text-muted-foreground">
-          <p>Adapta Labs Native — Plugins de Consultor e Cliente</p>
-          <p className="mt-1">Dúvidas? Fale com o time Adapta</p>
-        </div>
+        <footer className="mt-12 pt-8 border-t border-adapta text-center">
+          <p className="text-sm text-adapta-muted">
+            Adapta Labs Native — Plugins de Consultor e Cliente
+          </p>
+          <p className="mt-1 text-xs text-adapta-muted/70">Dúvidas? Fale com o time Adapta</p>
+        </footer>
       </div>
     </div>
   )
