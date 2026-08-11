@@ -18,6 +18,7 @@ import {
   TestTube,
   BookOpen,
   Info,
+  FolderOpen,
 } from 'lucide-react'
 
 const CopyButton = ({ text }: { text: string }) => {
@@ -88,6 +89,44 @@ const Index = () => {
             Claude
           </p>
         </div>
+
+        {/* Casos de teste */}
+        <Card className="mb-8 border-amber-500/20 bg-amber-500/5">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <FolderOpen className="h-5 w-5 text-amber-600" />
+              Casos de teste
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <a
+              href="https://drive.google.com/drive/folders/1pWvVH5EyBrwkj9VMGakZPqxemq-kcDds?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-3 rounded-lg border hover:bg-muted/50 transition-colors group"
+            >
+              <div className="h-10 w-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                <FolderOpen className="h-5 w-5 text-amber-600" />
+              </div>
+              <div>
+                <div className="font-medium group-hover:text-primary transition-colors">
+                  Pasta de cases no Google Drive
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Cases fictícios para teste dos plugins
+                </div>
+              </div>
+              <ExternalLink className="h-4 w-4 ml-auto text-muted-foreground" />
+            </a>
+            <div className="mt-3 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-sm flex items-start gap-2">
+              <Info className="h-4 w-4 text-amber-600 mt-0.5 shrink-0" />
+              <span>
+                <strong>Importante:</strong> copie os cases para uma pasta no seu computador. Não
+                altere os originais nessa pasta do Drive.
+              </span>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Repos */}
         <Card className="mb-8 border-primary/20">
