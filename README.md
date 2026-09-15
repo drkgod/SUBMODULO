@@ -1,131 +1,36 @@
-# Projeto Criado com o Skip
+# Guia de Teste dos Plugins · Adapta Native
 
-Este projeto foi criado de ponta a ponta com o [Skip](https://goskip.dev).
+Aplicação-guia para configurar, testar e validar os plugins **Consultor** e **Cliente** da Adapta Native.
 
-## 🚀 Stack Tecnológica
+## Para que serve
 
-- **React 19** - Biblioteca JavaScript para construção de interfaces
-- **Vite** - Build tool extremamente rápida
-- **TypeScript** - Superset tipado do JavaScript
-- **Shadcn UI** - Componentes reutilizáveis e acessíveis
-- **Tailwind CSS** - Framework CSS utility-first
-- **React Router** - Roteamento para aplicações React
-- **React Hook Form** - Gerenciamento de formulários performático
-- **Zod** - Validação de schemas TypeScript-first
-- **Recharts** - Biblioteca de gráficos para React
+O guia transforma a instalação e o teste dos plugins em uma sequência visual, reduzindo erro de configuração e deixando explícito o comportamento esperado em cada runtime.
 
-## 📋 Pré-requisitos
+## Conteúdo
 
-- Node.js 18+
-- npm
+- preparação do ambiente de teste;
+- configuração do agente Consultor;
+- configuração do agente Cliente;
+- prompts prontos para copiar;
+- links diretos para os repositórios oficiais;
+- critérios de validação do fluxo.
 
-## 🔧 Instalação
+## Plugins relacionados
 
-```bash
-npm install
-```
+- [Plugin Consultor](https://github.com/drkgod/Plugin-Consultor---Adapta)
+- [Plugin Cliente](https://github.com/drkgod/Plugin-Cliente---Adapta)
 
-## 💻 Scripts Disponíveis
+## Stack
 
-### Desenvolvimento
+`React 19` · `TypeScript` · `Vite` · `Tailwind CSS` · `shadcn/ui`
+
+## Executar
 
 ```bash
-# Iniciar servidor de desenvolvimento
-npm start
-# ou
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Abre a aplicação em modo de desenvolvimento em [http://localhost:5173](http://localhost:5173).
+## Status
 
-### Build
-
-```bash
-# Build para produção
-npm run build
-
-# Build para desenvolvimento
-npm run build:dev
-```
-
-Gera os arquivos otimizados para produção na pasta `dist/`.
-
-### Preview
-
-```bash
-# Visualizar build de produção localmente
-npm run preview
-```
-
-Permite visualizar a build de produção localmente antes do deploy.
-
-### Linting e Formatação
-
-```bash
-# Executar linter
-npm run lint
-
-# Executar linter e corrigir problemas automaticamente
-npm run lint:fix
-
-# Formatar código com Oxfmt
-npm run format
-```
-
-## 📁 Estrutura do Projeto
-
-```
-.
-├── src/              # Código fonte da aplicação
-├── public/           # Arquivos estáticos
-├── dist/             # Build de produção (gerado)
-├── node_modules/     # Dependências (gerado)
-└── package.json      # Configurações e dependências do projeto
-```
-
-## 🎨 Componentes UI
-
-Este template inclui uma biblioteca completa de componentes Shadcn UI baseados em Radix UI:
-
-- Accordion
-- Alert Dialog
-- Avatar
-- Button
-- Checkbox
-- Dialog
-- Dropdown Menu
-- Form
-- Input
-- Label
-- Select
-- Switch
-- Tabs
-- Toast
-- Tooltip
-- E muito mais...
-
-## 📝 Ferramentas de Qualidade de Código
-
-- **TypeScript**: Tipagem estática
-- **Oxlint**: Linter extremamente rápido
-- **Oxfmt**: Formatação automática de código
-
-## 🔄 Workflow de Desenvolvimento
-
-1. Instale as dependências: `npm install`
-2. Inicie o servidor de desenvolvimento: `npm start`
-3. Faça suas alterações
-4. Verifique o código: `npm run lint`
-5. Formate o código: `npm run format`
-6. Crie a build: `npm run build`
-7. Visualize a build: `npm run preview`
-
-## 📦 Build e Deploy
-
-Para criar uma build otimizada para produção:
-
-```bash
-npm run build
-```
-
-Os arquivos otimizados serão gerados na pasta `dist/` e estarão prontos para deploy.
+Guia operacional e ambiente de teste. As regras canônicas dos plugins continuam nos respectivos repositórios; este app organiza a experiência de instalação e validação.
